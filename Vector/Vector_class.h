@@ -1,32 +1,36 @@
+// Дворников Даниил
 #pragma once
 
 #include <iostream>
 #include <cmath>
 #include <numbers>
+#include <string>
 
 using std::numbers::pi;
+using std::string;
 
 class Vector {
 	private: 
 		// Поля класса
-		// Координата x
+		// Компонента x
 		float X;
-		// Координата y
+		// Компонента y
 		float Y;
 
 	public:
 		// Методы класса
 		/// Конструктор
 		Vector();
+		Vector(float X1, float Y1);
 
 		/// Геттер для X
-		float get_X();
+		float get_X() const;
 
 		/// Геттер для Y
-		float get_Y();
+		float get_Y() const;
 
 		/// Сеттер для X
-		void set_X(float new_X);
+		void set_X(const float& new_X);
 
 		/// Сеттер для Y
 		void set_Y(const float& new_Y);
@@ -41,11 +45,14 @@ class Vector {
 		float angle_OY();
 
 		/// Сумма векторов (X, Y) и (x1, y1)
-		void sum_v(const float& x1, const float& y1);
+		void add_v(const Vector& vector);
 
 		/// Разность векторов (X, Y) и (x1, y1)
-		void dif_v(const float& x1, const float& y1);
+		void dif_v(const Vector& vector);
 
 		/// Умножение вектора(X, Y) на скаляр
 		void scalar_multiply(const float& scalar);
+
+		/// Преобразование полей X и Y в строку
+		string data_to_str();
 };
