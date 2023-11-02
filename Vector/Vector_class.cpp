@@ -1,7 +1,7 @@
-// Дворников Даниил
+п»ї// Р”РІРѕСЂРЅРёРєРѕРІ Р”Р°РЅРёРёР»
 #include "Vector_class.h"
 
-/// Конструктор
+/// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 Vector::Vector() {
 	X = 0.0;
 	Y = 0.0;
@@ -11,68 +11,67 @@ Vector::Vector(float X1, float Y1) {
 	X = X1;
 	Y = Y1;
 }
-// to do: return string X Y
 
-/// Геттер для X // why const?
+/// Р“РµС‚С‚РµСЂ РґР»СЏ X
 float Vector::get_X() const {
 	return X;
-}// можно напрямую
+}// РјРѕР¶РЅРѕ РЅР°РїСЂСЏРјСѓСЋ
 
-/// Геттер для Y
+/// Р“РµС‚С‚РµСЂ РґР»СЏ Y
 float Vector::get_Y() const {
 	return Y;
 }
 
-/// Сеттер для X
+/// РЎРµС‚С‚РµСЂ РґР»СЏ X
 void Vector::set_X(const float& new_X) {
 	X = new_X;
 }
 
-/// Сеттер для Y
+/// РЎРµС‚С‚РµСЂ РґР»СЏ Y
 void Vector::set_Y(const float& new_Y) {
 	Y = new_Y;
 }
 
-/// Вычисление длины вектора(X, Y)
-float Vector::length_v() {
+/// Р’С‹С‡РёСЃР»РµРЅРёРµ РґР»РёРЅС‹ РІРµРєС‚РѕСЂР°(X, Y)
+float Vector::length_v() const {
 	return sqrt(pow(X, 2) + pow(Y, 2));
 }
 
-/// Вычисление угла в градусах между вектором(X, Y) и осью OX
-float Vector::angle_OX() {
+/// Р’С‹С‡РёСЃР»РµРЅРёРµ СѓРіР»Р° РІ РіСЂР°РґСѓСЃР°С… РјРµР¶РґСѓ РІРµРєС‚РѕСЂРѕРј(X, Y) Рё РѕСЃСЊСЋ OX
+float Vector::angle_OX() const {
 	if (X == 0 && Y == 0) {
-		throw std::invalid_argument("Задан нулевой вектор");
+		throw std::invalid_argument("Р—Р°РґР°РЅ РЅСѓР»РµРІРѕР№ РІРµРєС‚РѕСЂ");
 	}
 	return acos(X / length_v()) * 180.0 / pi;
 }
 
-/// Вычисление угла в градусах между вектором(X, Y) и осью OY
-float Vector::angle_OY() {
+/// Р’С‹С‡РёСЃР»РµРЅРёРµ СѓРіР»Р° РІ РіСЂР°РґСѓСЃР°С… РјРµР¶РґСѓ РІРµРєС‚РѕСЂРѕРј(X, Y) Рё РѕСЃСЊСЋ OY
+float Vector::angle_OY() const {
 	if (X == 0 && Y == 0) {
-		throw std::invalid_argument("Задан нулевой вектор");
+		throw std::invalid_argument("Р—Р°РґР°РЅ РЅСѓР»РµРІРѕР№ РІРµРєС‚РѕСЂ");
 	}
 	return acos(Y / length_v()) * 180.0 / pi;
 }
 
-/// + к вектору (X, Y) и (x1, y1)
+/// + Рє РІРµРєС‚РѕСЂСѓ (X, Y) Рё (x1, y1)
 void Vector::add_v(const Vector& vector) {
 	X += vector.X;
 	Y += vector.Y;
 }
 
-/// Разность векторов (X, Y) и (x1, y1)
+/// Р Р°Р·РЅРѕСЃС‚СЊ РІРµРєС‚РѕСЂРѕРІ (X, Y) Рё (x1, y1)
 void Vector::dif_v(const Vector& vector) {
 	X -= vector.X;
 	Y -= vector.Y;
 }
 
-/// Умножение вектора(X, Y) на скаляр
+/// РЈРјРЅРѕР¶РµРЅРёРµ РІРµРєС‚РѕСЂР°(X, Y) РЅР° СЃРєР°Р»СЏСЂ
 void Vector::scalar_multiply(const float& scalar) {
 	X *= scalar;
 	Y *= scalar;
 }
 
-/// Преобразование полей X и Y в строку
-string Vector::data_to_str() {
-	return "Component X = " + std::to_string(X) + "\nComponent Y = " + std::to_string(Y);
+/// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РїРѕР»РµР№ X Рё Y РІ СЃС‚СЂРѕРєСѓ
+string Vector::to_str() const {
+	return "( " + std::to_string(X) + "; " + std::to_string(Y) + ")";
 }
