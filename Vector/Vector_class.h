@@ -9,7 +9,14 @@
 using std::numbers::pi;
 using std::string;
 
-class Vector {
+// Pаскомментировать строку ниже, чтобы отключить assert()
+//#define NDEBUG
+#include <cassert>
+
+// Погрешность вычислений для проверки работы программы
+const float eps = 1e-4;
+
+class Vector {// class ..
 	private: 
 		// Поля класса
 		// Компонента x
@@ -56,3 +63,5 @@ class Vector {
 		/// Преобразование полей X и Y в строку
 		string to_str() const;
 };
+
+void tests();

@@ -75,3 +75,22 @@ void Vector::scalar_multiply(const float& scalar) {
 string Vector::to_str() const {
 	return "( " + std::to_string(X) + "; " + std::to_string(Y) + ")";
 }
+
+void tests() {
+	Vector A(4.1, 5.4);
+	A.scalar_multiply(2.13);
+	assert(fabs(A.get_X() - 8.733) < eps && fabs(A.get_Y() - 11.502) < eps);
+
+	Vector B(8.033, 11.002);
+	A.dif_v(B);
+	assert(fabs(A.get_X() - 0.7) < eps && fabs(A.get_Y() - 0.5) < eps);
+
+	A.add_v(B);
+	assert(fabs(A.get_X() - 8.733) < eps && fabs(A.get_Y() - 11.502) < eps);
+
+	assert(fabs(B.angle_OX() - 53.865324) < eps);
+
+	assert(fabs(B.angle_OY() - 36.134718) < eps);
+
+	assert(fabs(B.length_v() - 13.622521) < eps);
+}
